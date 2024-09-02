@@ -2,7 +2,7 @@ package repository
 
 import (
 	"fmt"
-	"khalifgfrz/coffee-shop-be-go/internal/models/moviesAdd"
+	"khalifgfrz/tickitz-be/internal/models/moviesAdd"
 	"strings"
 
 	"github.com/jmoiron/sqlx"

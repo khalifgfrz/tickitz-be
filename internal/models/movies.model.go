@@ -97,15 +97,15 @@ type MoviesBanner struct {
 }
 
 type MoviesBody struct {
-	Title        *string   `db:"title" json:"title" form:"title" valid:"stringlength(2|100)~Nama Movies minimal 2 dan maksimal 100"`
-	Image        *string   `db:"image" json:"image" valid:"-"`
-	Genres       *string   `json:"genres" form:"genres"`
-	Director     *string   `db:"director" json:"director" form:"director" valid:"stringlength(5|100)~Nama Product minimal 5 dan maksimal 100"`
-	Casts        *string   `db:"casts" json:"casts" form:"casts" valid:"-"`
-	Duration     *string   `db:"duration" json:"duration" form:"duration" valid:"-"`
-	Release_Date *string   `db:"release_date" json:"release_date" form:"release_date" valid:"-"`
-	Synopsis     *string   `db:"synopsis" json:"synopsis" form:"synopsis" valid:"-"`
-	AiringDate   *[]string `json:"airing_date" form:"airing_date" valid:"-"`
-	AiringTime   *string   `json:"airing_time" form:"airing_time"`
-	Locations    *string   `json:"locations" form:"locations"`
+	Title        *string `db:"title" json:"title" form:"title" valid:"stringlength(2|100)~Nama Movies minimal 2 dan maksimal 100"`
+	Image        *string `db:"image" json:"image" valid:"-"`
+	Genres       *string `json:"genres" form:"genres"`
+	Director     *string `db:"director" json:"director" form:"director" valid:"stringlength(5|100)~Nama Product minimal 5 dan maksimal 100"`
+	Casts        *string `db:"casts" json:"casts" form:"casts" valid:"-"`
+	Duration     *string `db:"duration" json:"duration" form:"duration" valid:"-"`
+	Release_Date *string `db:"release_date" json:"release_date" form:"release_date" valid:"-"`
+	Synopsis     *string `db:"synopsis" json:"synopsis" form:"synopsis" valid:"-"`
+	AiringDate   *string `json:"airing_date" form:"airing_date" valid:"-"`
+	AiringTime   *string `json:"airing_time" form:"airing_time"`
+	Locations    *string `json:"locations" form:"locations"`
 }

@@ -111,4 +111,4 @@ $ go run cmd/main.go
 ## Contact
 
 Khalif Gaffarezka Auliasoma - kgaffarezka@gmail.com
-Project Links: https://github.com/khalifgfrz/coffee-shop-be-go
+Project Links: https://github.com/khalifgfrz/tickitz-be

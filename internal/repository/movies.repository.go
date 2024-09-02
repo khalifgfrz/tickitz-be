@@ -3,7 +3,7 @@ package repository
 import (
 	"database/sql"
 	"fmt"
-	"khalifgfrz/coffee-shop-be-go/internal/models"
+	"khalifgfrz/tickitz-be/internal/models"
 	"strings"
 
 	"github.com/jmoiron/sqlx"

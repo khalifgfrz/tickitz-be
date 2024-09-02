@@ -1,6 +1,6 @@
-module khalifgfrz/coffee-shop-be-go
+module khalifgfrz/tickitz-be
 
-go 1.22.5
+go 1.21.0
 
 require github.com/gin-gonic/gin v1.10.0
 

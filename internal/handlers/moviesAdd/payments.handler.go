@@ -1,8 +1,8 @@
 package handlers
 
 import (
-	"khalifgfrz/coffee-shop-be-go/internal/repository"
-	"khalifgfrz/coffee-shop-be-go/pkg"
+	"khalifgfrz/tickitz-be/internal/repository"
+	"khalifgfrz/tickitz-be/pkg"
 
 	"github.com/gin-gonic/gin"
 )

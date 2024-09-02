@@ -1,7 +1,7 @@
 package routers
 
 import (
-	middleware "khalifgfrz/coffee-shop-be-go/internal/middlewares"
+	middleware "khalifgfrz/tickitz-be/internal/middlewares"
 
 	"github.com/gin-gonic/gin"
 	"github.com/jmoiron/sqlx"

@@ -1,7 +1,7 @@
 package repository
 
 import (
-	"khalifgfrz/coffee-shop-be-go/internal/models"
+	"khalifgfrz/tickitz-be/internal/models"
 
 	"github.com/jmoiron/sqlx"
 )

@@ -1,9 +1,9 @@
 package handlers
 
 import (
-	models "khalifgfrz/coffee-shop-be-go/internal/models/moviesAdd"
-	"khalifgfrz/coffee-shop-be-go/internal/repository"
-	"khalifgfrz/coffee-shop-be-go/pkg"
+	models "khalifgfrz/tickitz-be/internal/models/moviesAdd"
+	"khalifgfrz/tickitz-be/internal/repository"
+	"khalifgfrz/tickitz-be/pkg"
 
 	"github.com/gin-gonic/gin"
 	"github.com/jmoiron/sqlx"

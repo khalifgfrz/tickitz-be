@@ -2,10 +2,10 @@ package handlers
 
 import (
 	"fmt"
-	"khalifgfrz/coffee-shop-be-go/internal/models"
-	"khalifgfrz/coffee-shop-be-go/internal/models/moviesAdd"
-	"khalifgfrz/coffee-shop-be-go/internal/repository"
-	"khalifgfrz/coffee-shop-be-go/pkg"
+	"khalifgfrz/tickitz-be/internal/models"
+	"khalifgfrz/tickitz-be/internal/models/moviesAdd"
+	"khalifgfrz/tickitz-be/internal/repository"
+	"khalifgfrz/tickitz-be/pkg"
 	"math/rand"
 	"strconv"
 	"strings"
@@ -83,13 +83,11 @@ func (h *HandlerMovie) InsertMovies(ctx *gin.Context) {
 			tx.Rollback()
 		}
 	}()
-
 	if err := ctx.ShouldBind(&movies); err != nil {
 		tx.Rollback()
 		response.BadRequest("Create movie failed, invalid input", err.Error())
 		return
 	}
-
 	genres, err := SplitCommaSeparatedInts(*movies.Genres)
 	if err != nil {
 		tx.Rollback()
@@ -175,7 +173,7 @@ func (h *HandlerMovie) InsertMovies(ctx *gin.Context) {
 		}
 	}
 
-	for _, dateRange := range *movies.AiringDate {
+	for _, dateRange := range strings.Split(*movies.AiringDate, ",") {
 		dates := strings.Split(dateRange, ",")
 		var airingDate moviesAdd.AiringDate
 

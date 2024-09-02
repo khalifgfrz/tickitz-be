@@ -1,10 +1,10 @@
 package handlers
 
 import (
-	"khalifgfrz/coffee-shop-be-go/internal/models"
-	"khalifgfrz/coffee-shop-be-go/internal/models/moviesAdd"
-	"khalifgfrz/coffee-shop-be-go/internal/repository"
-	"khalifgfrz/coffee-shop-be-go/pkg"
+	"khalifgfrz/tickitz-be/internal/models"
+	"khalifgfrz/tickitz-be/internal/models/moviesAdd"
+	"khalifgfrz/tickitz-be/internal/repository"
+	"khalifgfrz/tickitz-be/pkg"
 	"strconv"
 
 	"github.com/gin-gonic/gin"

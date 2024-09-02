@@ -1,7 +1,7 @@
 package repository
 
 import (
-	"khalifgfrz/coffee-shop-be-go/internal/models/moviesAdd"
+	"khalifgfrz/tickitz-be/internal/models/moviesAdd"
 
 	"github.com/jmoiron/sqlx"
 )

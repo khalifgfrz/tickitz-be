@@ -1,9 +1,9 @@
 package routers
 
 import (
-	"khalifgfrz/coffee-shop-be-go/internal/handlers"
-	middleware "khalifgfrz/coffee-shop-be-go/internal/middlewares"
-	"khalifgfrz/coffee-shop-be-go/internal/repository"
+	"khalifgfrz/tickitz-be/internal/handlers"
+	middleware "khalifgfrz/tickitz-be/internal/middlewares"
+	"khalifgfrz/tickitz-be/internal/repository"
 
 	"github.com/gin-gonic/gin"
 	"github.com/jmoiron/sqlx"
