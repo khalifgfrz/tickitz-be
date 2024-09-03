@@ -19,11 +19,11 @@ type Response struct {
 }
 
 type Meta struct {
-	Total     int `json:"totalData,omitempty"`
-	TotalPage int `json:"totalPage,omitempty"`
-	Page      int `json:"page,omitempty"`
-	NextPage  int `json:"nextPage,omitempty"`
-	PrevPage  int `json:"prevPage,omitempty"`
+	Total     int    `json:"totalData,omitempty"`
+	TotalPage int    `json:"totalPage,omitempty"`
+	Page      int    `json:"page,omitempty"`
+	NextPage  string `json:"nextPage,omitempty"`
+	PrevPage  string `json:"prevPage,omitempty"`
 }
 
 func NewResponse(ctx *gin.Context) *Responder {

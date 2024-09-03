@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"fmt"
+	"khalifgfrz/tickitz-be/internal/helpers"
 	"khalifgfrz/tickitz-be/internal/models"
 	"khalifgfrz/tickitz-be/internal/models/moviesAdd"
 	"khalifgfrz/tickitz-be/internal/repository"
@@ -264,11 +265,70 @@ func (h *HandlerMovie) InsertMovies(ctx *gin.Context) {
 	response.Created("Data created", results)
 }
 
+// func (h *HandlerMovie) GetMovies(ctx *gin.Context) {
+// 	response := pkg.NewResponse(ctx)
+
+// 	pageStr := ctx.DefaultQuery("page", "1")
+// 	limitStr := ctx.DefaultQuery("limit", "16")
+
+// 	page, err := strconv.Atoi(pageStr)
+// 	if err != nil || page < 1 {
+// 		response.BadRequest("Invalid or missing 'page' parameter", err.Error())
+// 		return
+// 	}
+
+// 	limit, err := strconv.Atoi(limitStr)
+// 	if err != nil || limit < 1 {
+// 		response.BadRequest("Invalid or missing 'limit' parameter", err.Error())
+// 		return
+// 	}
+
+// 	query := models.MoviesQuery{
+// 		Page:  page,
+// 		Limit: limit,
+// 	}
+
+// 	if err := ctx.ShouldBindQuery(&query); err != nil {
+// 		response.BadRequest("Invalid query parameter", err.Error())
+// 		return
+// 	}
+
+// 	movies, total, err := h.GetAllMovies(&query)
+// 	if err != nil {
+// 		response.InternalServerError("Internal Server Error", err.Error())
+// 		return
+// 	}
+
+// 	if len(*movies) == 0 {
+// 		response.NotFound("Movie Not Found", "No movies available for the given criteria")
+// 		return
+// 	}
+
+// 	totalPages := (total + query.Limit - 1) / query.Limit
+// 	meta := &pkg.Meta{
+// 		Total:     total,
+// 		TotalPage: totalPages,
+// 		Page:      query.Page,
+// 		NextPage:  0,
+// 		PrevPage:  0,
+// 	}
+
+// 	if query.Page+1 <= totalPages {
+// 		meta.NextPage = query.Page + 1
+// 	}
+
+// 	if query.Page > 1 {
+// 		meta.PrevPage = query.Page - 1
+// 	}
+
+// 	response.GetAllSuccess("Data fetched", movies, meta)
+// }
+
 func (h *HandlerMovie) GetMovies(ctx *gin.Context) {
 	response := pkg.NewResponse(ctx)
 
 	pageStr := ctx.DefaultQuery("page", "1")
-	limitStr := ctx.DefaultQuery("limit", "16")
+	limitStr := ctx.DefaultQuery("limit", "12")
 
 	page, err := strconv.Atoi(pageStr)
 	if err != nil || page < 1 {
@@ -303,24 +363,34 @@ func (h *HandlerMovie) GetMovies(ctx *gin.Context) {
 		return
 	}
 
-	totalPages := (total + query.Limit - 1) / query.Limit
-	meta := &pkg.Meta{
+	scheme := "http"
+	if proto := ctx.GetHeader("X-Forwarded-Proto"); proto != "" {
+		scheme = proto
+	} else if ctx.Request.TLS != nil {
+		scheme = "https"
+	}
+
+	host := ctx.Request.Host
+	path := ctx.Request.URL.Path
+	baseURL := fmt.Sprintf("%s://%s%s", scheme, host, path)
+
+	nextPage, prevPage := helpers.BuildPaginationLink(ctx, baseURL, page, limit, total)
+
+	meta := pkg.Meta{
 		Total:     total,
-		TotalPage: totalPages,
+		TotalPage: (total + query.Limit - 1) / query.Limit,
 		Page:      query.Page,
-		NextPage:  0,
-		PrevPage:  0,
+		NextPage:  nextPage,
+		PrevPage:  prevPage,
 	}
 
-	if query.Page+1 <= totalPages {
-		meta.NextPage = query.Page + 1
-	}
+	// fmt.Printf("Base URL: %s\n", baseURL)
 
-	if query.Page > 1 {
-		meta.PrevPage = query.Page - 1
-	}
+	// fmt.Printf("Next page URL: %s\n", nextPage)
+	// fmt.Printf("Previous page URL: %s\n", prevPage)
 
-	response.GetAllSuccess("Data fetched", movies, meta)
+	res := pkg.NewResponse(ctx)
+	res.GetAllSuccess("Movies fetched successfully", movies, &meta)
 }
 
 func (h *HandlerMovie) GetMovieDetails(ctx *gin.Context) {
