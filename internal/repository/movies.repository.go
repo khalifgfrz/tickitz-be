@@ -87,6 +87,7 @@ func (r *RepoMovies) GetAllMovies(query *models.MoviesQuery) (*models.MovieRespo
 		FROM public.movies "m"
 		LEFT JOIN public.genre_movies gm ON "m"."id" = "gm"."movie_id"
 		LEFT JOIN public.genres "g" ON "gm"."genre_id" = "g"."id"
+		WHERE "m"."is_deleted" = FALSE
 	`
 
 	countQuery := `
