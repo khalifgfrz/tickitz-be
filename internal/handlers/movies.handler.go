@@ -328,7 +328,7 @@ func (h *HandlerMovie) GetMovies(ctx *gin.Context) {
 	response := pkg.NewResponse(ctx)
 
 	pageStr := ctx.DefaultQuery("page", "1")
-	limitStr := ctx.DefaultQuery("limit", "2")
+	limitStr := ctx.DefaultQuery("limit", "12")
 
 	page, err := strconv.Atoi(pageStr)
 	if err != nil || page < 1 {
